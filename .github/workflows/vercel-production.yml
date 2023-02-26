@@ -1,0 +1,24 @@
+name: vercel-production
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+  vercel:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Setup Node 16.0.0
+        uses: actions/setup-node@v2.1.5
+        with:
+          node-version: '16.0.0'
+ 
+      - name: Build
+        run: |
+          yarn install
+          yarn build:prd
+      

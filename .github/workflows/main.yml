@@ -1,0 +1,33 @@
+name: vercel-staging
+
+on:
+  push:
+    branches:
+        - main
+
+jobs:
+  vercel:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: SSH deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+ 
+      - name: Setup Node 16.0.0
+        uses: actions/setup-node@v2.1.5
+        with:
+          node-version: '16.0.0'
+ 
+      - name: Build
+        run: |
+          yarn install
+          yarn build:staging
+          
+          
