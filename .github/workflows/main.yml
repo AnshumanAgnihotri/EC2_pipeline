@@ -6,14 +6,13 @@ on:
         - main
  
   jobs:
-    runs-on: ubuntu-latest
+  runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
-
       - name: SSH deploy
         uses: appleboy/ssh-action@master
-        with:
+      with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.KEY }}
