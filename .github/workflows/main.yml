@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-     - name: SSH deploy
+     - name: SSH configure
        uses: appleboy/ssh-action@master
        with:
           host: ${{ secrets.HOST }}
