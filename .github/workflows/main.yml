@@ -1,4 +1,4 @@
-name: CICD for Youtube
+name: CICD
 
 on:
   push:
@@ -46,7 +46,7 @@ jobs:
                nvm instal 16
                npm install -g pm2
                cd ~/CICD
-               git pull origin main
+               git pull origin master
                npm install
                npm run build
                pm2 restart api
